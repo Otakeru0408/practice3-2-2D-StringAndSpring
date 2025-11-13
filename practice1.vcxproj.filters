@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="0_メインファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="1_GameManager">
+      <UniqueIdentifier>{b02856be-7a32-4610-b4a7-674ae2be33a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2_Stateインタフェース">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="3_TitleState">
+      <UniqueIdentifier>{82ee0e2d-e1e0-45d8-b83d-77ef4f36a45c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4_InGameState">
+      <UniqueIdentifier>{3a94d82d-7443-4a07-a9f5-6c4fa972e4da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5_ResultState">
+      <UniqueIdentifier>{a46bc702-aeb8-477d-854b-5330918858e4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>0_メインファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleState.cpp">
+      <Filter>3_TitleState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>1_GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="InGameState.cpp">
+      <Filter>4_InGameState</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultState.cpp">
+      <Filter>5_ResultState</Filter>
+    </ClCompile>
+    <ClCompile Include="SpringManager.cpp">
+      <Filter>0_メインファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SpringAndGravityManager.cpp">
+      <Filter>0_メインファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="StringPointManager.cpp">
+      <Filter>0_メインファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TitleState.h">
+      <Filter>3_TitleState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>1_GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameState.h">
+      <Filter>2_Stateインタフェース</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameState.h">
+      <Filter>4_InGameState</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultState.h">
+      <Filter>5_ResultState</Filter>
+    </ClInclude>
+    <ClInclude Include="InputState.h">
+      <Filter>2_Stateインタフェース</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData.h">
+      <Filter>2_Stateインタフェース</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringManager.h">
+      <Filter>2_Stateインタフェース</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringAndGravityManager.h">
+      <Filter>2_Stateインタフェース</Filter>
+    </ClInclude>
+    <ClInclude Include="StringPointManager.h">
+      <Filter>2_Stateインタフェース</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
