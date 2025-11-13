@@ -138,6 +138,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="InGameState.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PBDSimulation.cpp" />
     <ClCompile Include="ResultState.cpp" />
     <ClCompile Include="SpringAndGravityManager.cpp" />
     <ClCompile Include="SpringManager.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="IGameState.h" />
     <ClInclude Include="InGameState.h" />
     <ClInclude Include="InputState.h" />
+    <ClInclude Include="PBDSimulation.h" />
     <ClInclude Include="ResultState.h" />
     <ClInclude Include="SpringAndGravityManager.h" />
     <ClInclude Include="SpringManager.h" />

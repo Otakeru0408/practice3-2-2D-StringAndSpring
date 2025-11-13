@@ -10,7 +10,8 @@ void InGameState::Init() {
 	m_gameFontHandle = CreateFontToHandle("YDW ‚ ‚¨‚³‚¬ R", 25, 3);
 	//m_springManager = std::make_shared<SpringManager>();
 	//m_spring_GravityManager = std::make_shared<SpringAndGravityManager>();
-	m_stringPointManager = std::make_shared<StringPointManager>(320.0f, 100.0f, 10, 15.0f, 200.0f, 5.0f);
+	//m_stringPointManager = std::make_shared<StringPointManager>(320.0f, 100.0f, 10, 15.0f, 200.0f, 5.0f);
+	m_PBDSimulation = std::make_shared<PBDSimulation>();
 }
 
 SceneTransition* InGameState::Update(const InputState* input, float deltaTime) {
@@ -23,7 +24,8 @@ SceneTransition* InGameState::Update(const InputState* input, float deltaTime) {
 
 	//m_springManager->Update(input, deltaTime);
 	//m_spring_GravityManager->Update(input, deltaTime);
-	m_stringPointManager->Update();
+	//m_stringPointManager->Update();
+	m_PBDSimulation->Update(input);
 
 	SceneTransition* trans = new SceneTransition{ TransitionType::None, nullptr };
 	return trans;
@@ -35,7 +37,8 @@ void InGameState::Draw() {
 
 	//m_springManager->Draw();
 	//m_spring_GravityManager->Draw();
-	m_stringPointManager->Draw();
+	//m_stringPointManager->Draw();
+	m_PBDSimulation->Draw();
 }
 
 void InGameState::Terminate() {

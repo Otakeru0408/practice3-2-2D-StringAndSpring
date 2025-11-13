@@ -1,8 +1,9 @@
 #pragma once
 #include "IGameState.h"
-//#include "SpringManager.h"
-//#include "SpringAndGravityManager.h"
+#include "SpringManager.h"
+#include "SpringAndGravityManager.h"
 #include "StringPointManager.h"
+#include "PBDSimulation.h"
 
 class GameManager;
 
@@ -19,7 +20,8 @@ public:
 private:
 	int m_gameGraphHandle;
 	int m_gameFontHandle;
-	//std::shared_ptr<SpringManager> m_springManager;
-	//std::shared_ptr<SpringAndGravityManager> m_spring_GravityManager;
+	std::shared_ptr<SpringManager> m_springManager;
+	std::shared_ptr<SpringAndGravityManager> m_spring_GravityManager;
 	std::shared_ptr<StringPointManager> m_stringPointManager;
+	std::shared_ptr<PBDSimulation> m_PBDSimulation;
 };
