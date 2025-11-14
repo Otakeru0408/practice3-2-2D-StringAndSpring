@@ -24,6 +24,8 @@ public:
 	void Update(const InputState* input);
 	void Draw();
 	bool changeVersion = false;
+	int testCount = 4;
+	int nodeColor = 0;
 private:
 	std::vector<Vec2F> nodes;
 	int nodeCount;
@@ -33,5 +35,6 @@ private:
 	float moveSpeed;
 	float segmentLength;
 
-	void UpdateNodes();
+	void UpdateNodesWithRing();
+	void UpdateNodesLine();
 };
