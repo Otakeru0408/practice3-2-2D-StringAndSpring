@@ -23,6 +23,7 @@ public:
 	PBDSimulation();
 	void Update(const InputState* input);
 	void Draw();
+	bool changeVersion = false;
 private:
 	std::vector<Vec2F> nodes;
 	int nodeCount;
@@ -30,4 +31,7 @@ private:
 	float circleRadius;
 	float startX, startY;
 	float moveSpeed;
+	float segmentLength;
+
+	void UpdateNodes();
 };

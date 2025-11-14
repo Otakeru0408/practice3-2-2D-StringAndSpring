@@ -12,6 +12,8 @@ void InGameState::Init() {
 	//m_spring_GravityManager = std::make_shared<SpringAndGravityManager>();
 	//m_stringPointManager = std::make_shared<StringPointManager>(320.0f, 100.0f, 10, 15.0f, 200.0f, 5.0f);
 	m_PBDSimulation = std::make_shared<PBDSimulation>();
+	//m_PBDSimulation2 = std::make_shared<PBDSimulation>();
+	//m_PBDSimulation2->changeVersion = true;
 }
 
 SceneTransition* InGameState::Update(const InputState* input, float deltaTime) {
@@ -26,6 +28,7 @@ SceneTransition* InGameState::Update(const InputState* input, float deltaTime) {
 	//m_spring_GravityManager->Update(input, deltaTime);
 	//m_stringPointManager->Update();
 	m_PBDSimulation->Update(input);
+	//m_PBDSimulation2->Update(input);
 
 	SceneTransition* trans = new SceneTransition{ TransitionType::None, nullptr };
 	return trans;
@@ -38,6 +41,7 @@ void InGameState::Draw() {
 	//m_springManager->Draw();
 	//m_spring_GravityManager->Draw();
 	//m_stringPointManager->Draw();
+	//m_PBDSimulation2->Draw();
 	m_PBDSimulation->Draw();
 }
 

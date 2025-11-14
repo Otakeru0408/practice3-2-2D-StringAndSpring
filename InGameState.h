@@ -24,4 +24,5 @@ private:
 	std::shared_ptr<SpringAndGravityManager> m_spring_GravityManager;
 	std::shared_ptr<StringPointManager> m_stringPointManager;
 	std::shared_ptr<PBDSimulation> m_PBDSimulation;
+	std::shared_ptr<PBDSimulation> m_PBDSimulation2;
 };
