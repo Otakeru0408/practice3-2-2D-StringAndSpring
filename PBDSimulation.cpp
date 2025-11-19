@@ -2,7 +2,7 @@
 
 PBDSimulation::PBDSimulation()
 	:nodeCount(10), pointRadius(100), circleRadius(5)
-	, startX(0), startY(0), moveSpeed(10), segmentLength(30)
+	, startX(0), startY(0), moveSpeed(1), segmentLength(30)
 {
 	startX = GameData::windowWidth / 2;
 	startY = GameData::windowHeight / 2;
@@ -20,7 +20,7 @@ PBDSimulation::PBDSimulation()
 }
 
 void PBDSimulation::Update(const InputState* input) {
-	Vec2F& topNode = nodes[0];
+	Vec2f& topNode = nodes[0];
 	if (input->IsKeyStay(KEY_INPUT_A)) {
 		topNode.x -= moveSpeed;
 	}
@@ -35,22 +35,22 @@ void PBDSimulation::Update(const InputState* input) {
 	}
 
 	for (int i = 0; i < testCount; i++) {
-		//UpdateNodesWithRing();
-		UpdateNodesLine();
+		UpdateNodesWithRing();
+		//UpdateNodesLine();
 	}
 }
 
 void PBDSimulation::UpdateNodesLine() {
 	for (int i = 1; i < nodes.size(); i++) {
-		Vec2F& p1 = nodes[i % nodes.size()];
-		Vec2F& p2 = nodes[i - 1];
+		Vec2f& p1 = nodes[i % nodes.size()];
+		Vec2f& p2 = nodes[i - 1];
 
 		//node0→node1のベクトルとその長さを取得
-		Vec2F diff = p1 - p2;
+		Vec2f diff = p1 - p2;
 		float currentDist = diff.length();
 
 		float correctFactor = (currentDist - segmentLength) / currentDist;
-		Vec2F correctVector = diff * correctFactor;
+		Vec2f correctVector = diff * correctFactor;
 
 		if (!changeVersion) {
 			if (i == 1) {
@@ -70,11 +70,11 @@ void PBDSimulation::UpdateNodesLine() {
 
 void PBDSimulation::UpdateNodesWithRing() {
 	for (int i = 1; i <= nodes.size(); i++) {
-		Vec2F& p1 = nodes[i % nodes.size()];
-		Vec2F& p2 = nodes[i - 1];
+		Vec2f& p1 = nodes[i % nodes.size()];
+		Vec2f& p2 = nodes[i - 1];
 
 		//node0→node1のベクトルとその長さを取得
-		Vec2F diff = p1 - p2;
+		Vec2f diff = p1 - p2;
 		float currentDist = diff.length();
 
 		//修正量：node0がうごいたらnode1との距離は理想の距離ではなくなるので修正
@@ -88,7 +88,7 @@ void PBDSimulation::UpdateNodesWithRing() {
 		*/
 
 		float correctFactor = (currentDist - segmentLength) / currentDist;
-		Vec2F correctVector = diff * correctFactor;
+		Vec2f correctVector = diff * correctFactor;
 
 		//p2(node0)からp1(node1)へのベクトルがdiffなので、p1からp2は逆ベクトルになる
 		//なので、p1に対してはマイナスになる
@@ -115,15 +115,15 @@ void PBDSimulation::Draw() {
 	for (int i = 0; i < nodes.size(); i++) {
 		DrawCircle(nodes[i].x, nodes[i].y, circleRadius, nodeColor, TRUE);
 	}
-	/*for (int i = 0; i < nodes.size(); i++) {
-		int next = (i + 1) % nodeCount;
-		DrawLine(nodes[i].x, nodes[i].y, nodes[next].x, nodes[next].y,
-			GetColor(255, 255, 255), 5);
-	}*/
-	for (int i = 0; i < nodes.size() - 1; i++) {
+	for (int i = 0; i < nodes.size(); i++) {
 		int next = (i + 1) % nodeCount;
 		DrawLine(nodes[i].x, nodes[i].y, nodes[next].x, nodes[next].y,
 			GetColor(255, 255, 255), 5);
 	}
+	/*for (int i = 0; i < nodes.size() - 1; i++) {
+		int next = (i + 1) % nodeCount;
+		DrawLine(nodes[i].x, nodes[i].y, nodes[next].x, nodes[next].y,
+			GetColor(255, 255, 255), 5);
+	}*/
 }
 

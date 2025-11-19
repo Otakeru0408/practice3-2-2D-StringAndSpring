@@ -50,6 +50,12 @@
     <ClCompile Include="PBDSimulation.cpp">
       <Filter>0_メインファイル</Filter>
     </ClCompile>
+    <ClCompile Include="PopRingManager.cpp">
+      <Filter>0_メインファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="PBDRingSim.cpp">
+      <Filter>0_メインファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TitleState.h">
@@ -83,6 +89,12 @@
       <Filter>2_Stateインタフェース</Filter>
     </ClInclude>
     <ClInclude Include="PBDSimulation.h">
+      <Filter>2_Stateインタフェース</Filter>
+    </ClInclude>
+    <ClInclude Include="PopRingManager.h">
+      <Filter>2_Stateインタフェース</Filter>
+    </ClInclude>
+    <ClInclude Include="PBDRingSim.h">
       <Filter>2_Stateインタフェース</Filter>
     </ClInclude>
   </ItemGroup>

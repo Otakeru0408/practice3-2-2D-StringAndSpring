@@ -4,14 +4,14 @@
 #include <vector>
 
 // 2次元ベクトル/座標構造体
-struct Vec2F {
+struct Vec2f {
 	float x;
 	float y;
 
 	// オペレーターオーバーロード (計算を簡略化)
-	Vec2F operator+(const Vec2F& other) const { return { x + other.x, y + other.y }; }
-	Vec2F operator-(const Vec2F& other) const { return { x - other.x, y - other.y }; }
-	Vec2F operator*(float scalar) const { return { x * scalar, y * scalar }; }
+	Vec2f operator+(const Vec2f& other) const { return { x + other.x, y + other.y }; }
+	Vec2f operator-(const Vec2f& other) const { return { x - other.x, y - other.y }; }
+	Vec2f operator*(float scalar) const { return { x * scalar, y * scalar }; }
 	// オペレーターオーバーロード (ベクトルの長さ)
 	float lengthSq() const { return x * x + y * y; }
 	float length() const { return std::sqrt(lengthSq()); }
@@ -20,7 +20,7 @@ struct Vec2F {
 
 class StringPointManager {
 private:
-	std::vector<Vec2F> ropeNodes; // 紐を構成するノード群
+	std::vector<Vec2f> ropeNodes; // 紐を構成するノード群
 
 	float segmentLength;      // 各セグメント（ノード間）の理想的な長さ
 	float maxStretchDistance; // 紐全体の伸びる限界距離 (Node 0 と Node N の間の距離)
@@ -68,7 +68,7 @@ public:
 	 */
 	void handleInputAndUpdateControllablePoint() {
 		// Node 0 はユーザーが操作するポイント
-		Vec2F& controllablePoint = ropeNodes[0];
+		Vec2f& controllablePoint = ropeNodes[0];
 
 		// 水平方向の移動
 		if (CheckHitKey(KEY_INPUT_A)) {
@@ -96,9 +96,9 @@ public:
 		if (ropeNodes.empty()) return;
 
 		// Node 0 (操作点) の位置
-		Vec2F& controllablePoint = ropeNodes[0];
+		Vec2f& controllablePoint = ropeNodes[0];
 		// Node N (追従点、末尾) の位置
-		Vec2F& lastFixedPoint = ropeNodes.back();
+		Vec2f& lastFixedPoint = ropeNodes.back();
 		const int N = ropeNodes.size() - 1;
 
 		// ----------------------------------------------------
@@ -111,7 +111,7 @@ public:
 
 		if (isRopeTaut) {
 			// 紐が伸びる限界を超えた場合、Node N を Node 0 から限界距離の位置に移動させる
-			Vec2F direction = normalize(lastFixedPoint - controllablePoint);
+			Vec2f direction = normalize(lastFixedPoint - controllablePoint);
 			lastFixedPoint = controllablePoint + direction * maxStretchDistance;
 		}
 
@@ -125,15 +125,15 @@ public:
 			// 拘束処理は Node 1 から Node N まで行う
 			for (int i = 1; i <= N; ++i) {
 				// p1 (Node i) と p2 (Node i-1) の間で処理
-				Vec2F& p1 = ropeNodes[i];
-				Vec2F& p2 = ropeNodes[i - 1];
+				Vec2f& p1 = ropeNodes[i];
+				Vec2f& p2 = ropeNodes[i - 1];
 
-				Vec2F diff = p1 - p2;
+				Vec2f diff = p1 - p2;
 				float currentDist = diff.length();
 
 				// 修正量 (どれだけ動かせばセグメント長になるか)
 				float correctionFactor = (currentDist - segmentLength) / currentDist;
-				Vec2F correctionVector = diff * correctionFactor;
+				Vec2f correctionVector = diff * correctionFactor;
 
 				// 1. Node i (p1) の移動:
 				// Node N がロックされている間は、Node N は動かせないため、
@@ -172,8 +172,8 @@ public:
 		// 1. 紐 (線) の描画
 		// Node i と Node i+1 を結ぶ線を描画
 		for (size_t i = 0; i < ropeNodes.size() - 1; ++i) {
-			const Vec2F& p1 = ropeNodes[i];
-			const Vec2F& p2 = ropeNodes[i + 1];
+			const Vec2f& p1 = ropeNodes[i];
+			const Vec2f& p2 = ropeNodes[i + 1];
 			DrawLine(
 				(int)p1.x,
 				(int)p1.y,
@@ -212,7 +212,7 @@ public:
 
 
 	// ヘルパー関数: ベクトルを正規化 (長さを1にする)
-	Vec2F normalize(const Vec2F& v) {
+	Vec2f normalize(const Vec2f& v) {
 		float len = v.length();
 		if (len == 0.0f) return { 0.0f, 0.0f };
 		return { v.x / len, v.y / len };

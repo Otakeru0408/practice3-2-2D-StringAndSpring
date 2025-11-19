@@ -4,6 +4,7 @@
 #include "SpringAndGravityManager.h"
 #include "StringPointManager.h"
 #include "PBDSimulation.h"
+#include "PBDRingSim.h"
 
 class GameManager;
 
@@ -25,4 +26,5 @@ private:
 	std::shared_ptr<StringPointManager> m_stringPointManager;
 	std::shared_ptr<PBDSimulation> m_PBDSimulation;
 	std::shared_ptr<PBDSimulation> m_PBDSimulation2;
+	std::shared_ptr<PBDRingSim> m_PBDRingSim;
 };
